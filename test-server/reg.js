@@ -5,7 +5,7 @@ const register = async () => {
       companyName: 'goMart',
       ownerName: 'Vyakaranam Sowmya',
       rollNo: '21L31A54B9',
-      ownerEmail: 'vyakaranamsowmya2103@gmail.com',
+      ownerEmail: 'vyksowmya@gmail.com',
       accessCode: 'ZngVRi'
     }, {
       headers: {
@@ -20,7 +20,7 @@ const register = async () => {
       clientID: clientID,
       clientSecret: clientSecret,
       ownerName: 'Vyakaranam Sowmya',
-      ownerEmail: 'vyakaranamsowmya2103@gmail.com',
+      ownerEmail: 'vyksowmya@gmail.com',
       rollNo: '21L31A54B9'
     }, {
       headers: {

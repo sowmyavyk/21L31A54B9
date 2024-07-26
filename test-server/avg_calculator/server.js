@@ -2,7 +2,6 @@ const express = require('express');
 const axios = require('axios');
 const app = express();
 const PORT = 9876;
-
 const WINDOW_SIZE = 10;
 const NUMBERS_API = {
   p: 'http://20.244.56.144/test/primes',
@@ -16,14 +15,13 @@ const calculateAverage = (nums) => {
   const sum = nums.reduce((acc, num) => acc + num, 0);
   return (sum / nums.length).toFixed(2);
 };
-
 const fetchNumbers = async (type) => {
     try {
       const response = await axios.get(NUMBERS_API[type], {
         headers: {
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiZXhwIjoxNzIxOTc1NDg5LCJpYXQiOjE3MjE5NzUxODksImlzcyI6IkFmZm9yZG1lZCIsImp0aSI6IjQ5N2ExNzVkLWEzYTYtNDA5MC1hYTU1LTM5Y2Y1ODFmNzlhYyIsInN1YiI6InZ5YWthcmFuYW1zb3dteWEyMTAzQGdtYWlsLmNvbSJ9LCJjb21wYW55TmFtZSI6ImdvTWFydCIsImNsaWVudElEIjoiNDk3YTE3NWQtYTNhNi00MDkwLWFhNTUtMzljZjU4MWY3OWFjIiwiY2xpZW50U2VjcmV0IjoiTEFhWWNyVXRmWWRjc3NNdCIsIm93bmVyTmFtZSI6IlZ5YWthcmFuYW0gU293bXlhIiwib3duZXJFbWFpbCI6InZ5YWthcmFuYW1zb3dteWEyMTAzQGdtYWlsLmNvbSIsInJvbGxObyI6IjIxTDMxQTU0QjkifQ.OkcwfC1FzZNAw1kgP-FHqGnZ0UkooGylocQXtVhGEaQ'
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiZXhwIjoxNzIxOTc3MDU4LCJpYXQiOjE3MjE5NzY3NTgsImlzcyI6IkFmZm9yZG1lZCIsImp0aSI6ImE5N2VkOWEyLTFhOTktNDQ3My05NmI5LTAyOTYxYWZkMjRkNyIsInN1YiI6InZ5a3Nvd215YUBnbWFpbC5jb20ifSwiY29tcGFueU5hbWUiOiJnb01hcnQiLCJjbGllbnRJRCI6ImE5N2VkOWEyLTFhOTktNDQ3My05NmI5LTAyOTYxYWZkMjRkNyIsImNsaWVudFNlY3JldCI6ImdUVFZJWU1SS3NHSGNmd0siLCJvd25lck5hbWUiOiJWeWFrYXJhbmFtIFNvd215YSIsIm93bmVyRW1haWwiOiJ2eWtzb3dteWFAZ21haWwuY29tIiwicm9sbE5vIjoiMjFMMzFBNTRCOSJ9.7JMSay2W0WBl8IZTAcpvuD4exovzCWgmW_NNQfBljKI'
         },
-        timeout: 5000 // Increase timeout to 5 seconds
+        timeout: 10000
       });
       return response.data.numbers || [];
     } catch (error) {
@@ -31,10 +29,7 @@ const fetchNumbers = async (type) => {
       return [];
     }
   };
-  
-  
 app.use(express.json());
-
 app.post('/numbers/:type', async (req, res) => {
     const type = req.params.type;
   
@@ -47,9 +42,7 @@ app.post('/numbers/:type', async (req, res) => {
       if (newNumbers.length === 0) {
         return res.status(500).json({ error: 'Failed to fetch numbers' });
       }
-  
       numbersStore = [...new Set([...numbersStore, ...newNumbers])].slice(-WINDOW_SIZE);
-  
       const windowPrevState = numbersStore.slice(0, -newNumbers.length);
       const windowCurrState = numbersStore.slice(-WINDOW_SIZE);
       const avg = calculateAverage(windowCurrState);
