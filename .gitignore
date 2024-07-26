@@ -29,3 +29,15 @@ $RECYCLE.BIN/
 
 dist/
 build/
+# Ignore node_modules directory
+node_modules/
+
+# Ignore package-lock.json (if you want to exclude it)
+package-lock.json
+
+# Ignore .babelrc file
+.babelrc
+
+# Optionally ignore other configuration files
+.env
+*.log
