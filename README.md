@@ -1,6 +1,3 @@
-Sure, here is a README file for your project:
-
-```markdown
 # Project Overview
 
 This repository contains solutions to two tasks: `Average Calculator` and `Companies Product Fetcher`. Both solutions are organized into their respective directories with associated code and output screenshots.
@@ -10,7 +7,6 @@ This repository contains solutions to two tasks: `Average Calculator` and `Compa
 1. [Average Calculator](#average-calculator)
 2. [Companies Product Fetcher](#companies-product-fetcher)
 
----
 
 ## Average Calculator
 
@@ -54,7 +50,6 @@ The `Average Calculator` project calculates the average of a set of numbers fetc
 
 The output of this project is a screenshot (`output.png`) showing the successful response of the server.
 
----
 
 ## Companies Product Fetcher
 
